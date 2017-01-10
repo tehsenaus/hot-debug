@@ -1,0 +1,26 @@
+{
+  "name": "hot-debug",
+  "version": "1.0.0",
+  "description": "Visionmedia's debug, monkey patched to support hot enable/disable",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tehsenaus/hot-debug.git"
+  },
+  "author": "Sean Micklethwaite",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tehsenaus/hot-debug/issues"
+  },
+  "homepage": "https://github.com/tehsenaus/hot-debug#readme",
+  "peerDependencies": {
+    "debug": ">=2.4.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "should": "^11.1.2"
+  }
+}
