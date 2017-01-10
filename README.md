@@ -1,4 +1,4 @@
-# hot-debug
+# hot-debug [![Build Status](https://travis-ci.org/tehsenaus/hot-debug.svg?branch=master)](https://travis-ci.org/tehsenaus/hot-debug)
 Visionmedia's debug, monkey patched to support hot enable/disable
 
 ## Usage
