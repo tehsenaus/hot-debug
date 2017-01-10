@@ -6,13 +6,17 @@ var createDebug = require('debug'),
 // Yo dawg, heard you like debug...
 var hotDebugDebug = createDebug('hot-debug');
 
+// Limit this so we don't leak memory if someone goes crazy and creates instances at runtime.
+var maxChangeListeners = +process.env.DEBUG_MAX_HOT || 1024;
 var changeListeners = [];
+
 
 module.exports = debugModule.exports = createHotDebug;
 
 Object.keys(createDebug).forEach(function (n) {
 	if ( n === 'enable' || n === 'disable' ) return;
 
+	// Settings must be set on the orignal object
 	Object.defineProperty(createHotDebug, n, {
 		get: function () {
 			return createDebug[n];
@@ -43,6 +47,11 @@ function createHotDebug(namespace) {
 	hotDebugDebug("createHotDebug: %s", namespace);
 
 	var debug = createDebug.apply(this, arguments);
+
+	if ( changeListeners.length >= maxChangeListeners ) {
+		hotDebugDebug("createHotDebug: maxChangeListeners reached (%d) - %s will not be hot", maxChangeListeners, namespace);
+		return debug;
+	}
 
 	listener.namespace = namespace;
 	changeListeners.push(listener);
