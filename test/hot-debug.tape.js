@@ -177,7 +177,7 @@ test('logging channel.enable|disable', function (assert) {
 	createDebug.disable();
 	_testChannelsEnabled(assert, 'none', []);
 	
-	c1.disable();
+	c1.enable(false);
 	_testChannelsEnabled(assert, '-c1', []);
 	
 	c1.enable();
@@ -189,16 +189,16 @@ test('logging channel.enable|disable', function (assert) {
 	c4.enable();
 	_testChannelsEnabled(assert, 'c1, c2 & c3', ['c1', 'c2', 'c3']);
 	
-	c2.disable();
+	c2.enable(false);
 	_testChannelsEnabled(assert, 'c1 & c3', ['c1', 'c3']);
 	
 	createDebug.enable('c*');
 	_testChannelsEnabled(assert, 'c*', ['c1', 'c2', 'c3']);
 	
-	b1.enable();
+	b1.enable(true);
 	_testChannelsEnabled(assert, 'c* & b1', ['b1', 'c1', 'c2', 'c3']);
 	
-	c2.disable();
+	c2.enable(false);
 	_testChannelsEnabled(assert, '-c2, +c* & b1', ['b1', 'c1', 'c3']);
 	
 	assert.end();

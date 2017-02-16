@@ -103,19 +103,24 @@ function createHotDebug(namespace) {
 
 	listener.namespace = namespace;
 	
-	debug.enable = function () {
-		_addNamespaceToList(createDebug.names, this.namespace);
-		_removeNamespaceFromList(createDebug.skips, this.namespace);
-		
-		if (this.disabled) {
-			hotDebugDebug("%s: couldn't be enabled; check -skips for wildcards", this.namespace);
+	debug.enable = function (toEnable) {
+		if (typeof toEnable == 'undefined') {
+			toEnable = true;
 		}
-		notifyListeners();
-	};
-	
-	debug.disable = function () {
-		_removeNamespaceFromList(createDebug.names, this.namespace);
-		_addNamespaceToList(createDebug.skips, this.namespace);
+		
+		if (toEnable) {
+			_addNamespaceToList(createDebug.names, this.namespace);
+			_removeNamespaceFromList(createDebug.skips, this.namespace);
+			
+			if (this.disabled) {
+				hotDebugDebug("%s: couldn't be enabled; check -skips for wildcards", this.namespace);
+			}
+		} else {
+			// disable
+			_removeNamespaceFromList(createDebug.names, this.namespace);
+			_addNamespaceToList(createDebug.skips, this.namespace);
+			notifyListeners();
+		}
 		notifyListeners();
 	};
 	
