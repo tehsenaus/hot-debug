@@ -119,7 +119,6 @@ function createHotDebug(namespace) {
 			// disable
 			_removeNamespaceFromList(createDebug.names, this.namespace);
 			_addNamespaceToList(createDebug.skips, this.namespace);
-			notifyListeners();
 		}
 		notifyListeners();
 	};

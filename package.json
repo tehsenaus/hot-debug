@@ -1,11 +1,11 @@
 {
   "name": "hot-debug",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Visionmedia's debug, monkey patched to support hot enable/disable",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "test-tape": "node $NODE_DEBUG_OPTION ./node_modules/tape/bin/tape test/*.tape.js"
+    "test-tape": "node $NODE_DEBUG_OPTION ./node_modules/tape/bin/tape test/*.tape.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -20,14 +20,13 @@
   "peerDependencies": {
     "debug": ">=2.4.0"
   },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
   "devDependencies": {
-    "debug": ">=2.4.0",
     "mocha": "^3.2.0",
     "rewire": "^2.5.2",
     "should": "^11.1.2",
     "tape": "^4.6.3"
-  },
-  "dependencies": {
-    "lodash": "^4.17.4"
   }
 }

@@ -2,10 +2,9 @@
 
 const util = require('util');
 
-var test = require('tape').test;
+const test = require('tape').test;
 const rewire = require("rewire");
 
-var hotDebug = rewire('../index');
 
 var createDebug = require('debug');
 
@@ -57,7 +56,6 @@ function _testChannelsEnabled(assert, id, expected) {
 	createDebug.formatArgs = savedFormatArgs;
 	
 	// test
-	//console.log(util.inspect(redirected));
 	assert.deepEquals(redirected, expected, id);
 }
 
