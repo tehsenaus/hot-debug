@@ -5,24 +5,25 @@ const util = require('util');
 const test = require('tape').test;
 const rewire = require("rewire");
 
+const hotdebug = rewire('../index.js');
 
-var createDebug = require('debug');
+const createDebug = require('debug');
 
-var b1 = require('debug')('b1');
-var c1 = require('debug')('c1');
-var c2 = require('debug')('c2');
-var c4 = require('debug')('c3');
+const b1 = require('debug')('b1');
+const c1 = require('debug')('c1');
+const c2 = require('debug')('c2');
+const c4 = require('debug')('c3');
 
 //-------------------------------
 // rewire privates
 
-var _addToArrayUnique = hotDebug.__get__('_addToArrayUnique');
-var _safeRemoveFromArray = hotDebug.__get__('_safeRemoveFromArray');
+const _addToArrayUnique = hotdebug.__get__('_addToArrayUnique');
+const _safeRemoveFromArray = hotdebug.__get__('_safeRemoveFromArray');
 
-var _namespaceRegexFor = hotDebug.__get__('_namespaceRegexFor');
+const _namespaceRegexFor = hotdebug.__get__('_namespaceRegexFor');
 
-var _addNamespaceToList = hotDebug.__get__('_addNamespaceToList');
-var _removeNamespaceFromList = hotDebug.__get__('_removeNamespaceFromList');
+const _addNamespaceToList = hotdebug.__get__('_addNamespaceToList');
+const _removeNamespaceFromList = hotdebug.__get__('_removeNamespaceFromList');
 
 
 //-------------------------------
