@@ -11,6 +11,20 @@ npm i --save hot-debug
 
 ## API
 
-Same as https://github.com/visionmedia/debug.
+All the wholesome goodness of [visionmedia/debug](https://github.com/visionmedia/debug) but with the addition of an `.enable([opt: isEnabled])` method on individual debug channels.
+
+## Example
+
+````javascript
+require('hot-debug');
+
+var httpLog = require('debug')('http');
+var workerLog = require('debug')('worker');
+
+function configureDebug(config) {
+  httpLog.enable(config.log.http);
+  workerLog(config.log.workerLog);
+}
+````
 
 You don't need to change your imports at all - just go on using ```require('debug')(...)``` and everything will be the same. Except when you call enable(), existing instances will be updated!
