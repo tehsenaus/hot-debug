@@ -16,10 +16,8 @@
     "url": "https://github.com/tehsenaus/hot-debug/issues"
   },
   "homepage": "https://github.com/tehsenaus/hot-debug#readme",
-  "peerDependencies": {
-    "debug": ">=2.4.0"
-  },
   "dependencies": {
+    "debug": ">=2.6.1",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
