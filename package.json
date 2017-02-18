@@ -4,7 +4,7 @@
   "description": "Visionmedia's debug, monkey patched to support hot enable/disable",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_DEBUG=module node ./node_modules/tape/bin/tape test/hot-debug.tape.js"
+    "test": "node ./node_modules/tape/bin/tape test/hot-debug.tape.js"
   },
   "repository": {
     "type": "git",

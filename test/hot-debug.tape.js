@@ -1,29 +1,29 @@
 'use strict';
 
-const util = require('util');
+var util = require('util');
 
-const test = require('tape').test;
-const rewire = require("rewire");
+var test = require('tape').test;
+var rewire = require("rewire");
 
-const hotdebug = rewire('../index.js');
+var hotdebug = rewire('../index.js');
 
-const createDebug = require('debug');
+var createDebug = require('debug');
 
-const b1 = require('debug')('b1');
-const c1 = require('debug')('c1');
-const c2 = require('debug')('c2');
-const c4 = require('debug')('c3');
+var b1 = require('debug')('b1');
+var c1 = require('debug')('c1');
+var c2 = require('debug')('c2');
+var c4 = require('debug')('c3');
 
 //-------------------------------
 // rewire privates
 
-const _addToArrayUnique = hotdebug.__get__('_addToArrayUnique');
-const _safeRemoveFromArray = hotdebug.__get__('_safeRemoveFromArray');
+var _addToArrayUnique = hotdebug.__get__('_addToArrayUnique');
+var _safeRemoveFromArray = hotdebug.__get__('_safeRemoveFromArray');
 
-const _namespaceRegexFor = hotdebug.__get__('_namespaceRegexFor');
+var _namespaceRegexFor = hotdebug.__get__('_namespaceRegexFor');
 
-const _addNamespaceToList = hotdebug.__get__('_addNamespaceToList');
-const _removeNamespaceFromList = hotdebug.__get__('_removeNamespaceFromList');
+var _addNamespaceToList = hotdebug.__get__('_addNamespaceToList');
+var _removeNamespaceFromList = hotdebug.__get__('_removeNamespaceFromList');
 
 
 //-------------------------------
@@ -33,8 +33,8 @@ var redirected;
 
 function _testChannelsEnabled(assert, id, expected) {
 	// save log settings
-	const savedStream = createDebug.log;
-	const savedFormatArgs = createDebug.formatArgs;
+	var savedStream = createDebug.log;
+	var savedFormatArgs = createDebug.formatArgs;
 	
 	// redirect log stream to an array
 	redirected = [];
@@ -67,15 +67,15 @@ function _testChannelsEnabled(assert, id, expected) {
 test('_add', function (assert) {
 	assert.plan(3);
 	
-	const a1 = [1, 2, 3];
+	var a1 = [1, 2, 3];
 	_addToArrayUnique(a1, 4);
 	assert.deepEquals(a1, [1, 2, 3, 4]);
 	
-	const a2 = [];
+	var a2 = [];
 	_addToArrayUnique(a2, 11);
 	assert.deepEquals(a2, [11]);
 	
-	const a3 = [6, 7, 8];
+	var a3 = [6, 7, 8];
 	_addToArrayUnique(a3, 6);
 	assert.deepEquals(a3, [6, 7, 8]);
 	
@@ -85,19 +85,19 @@ test('_add', function (assert) {
 test('_remove', function (assert) {
 	assert.plan(4);
 	
-	const a1 = [1, 2, 3];
+	var a1 = [1, 2, 3];
 	_safeRemoveFromArray(a1, 4);
 	assert.deepEquals(a1, [1, 2, 3]);
 	
-	const a2 = [];
+	var a2 = [];
 	_safeRemoveFromArray(a2, 11);
 	assert.deepEquals(a2, []);
 	
-	const a3 = [23];
+	var a3 = [23];
 	_safeRemoveFromArray(a3, 23);
 	assert.deepEquals(a3, []);
 	
-	const a4 = [1, 2, 3];
+	var a4 = [1, 2, 3];
 	_safeRemoveFromArray(a4, 2);
 	assert.deepEquals(a4, [1, 3]);
 	
